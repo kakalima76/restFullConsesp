@@ -1,15 +1,15 @@
 var cnn = function(){
-        /*var username = process.env.USUARIO,
+        var username = process.env.USUARIO,
         password = process.env.SENHA,
         server = "ds060478.mongolab.com",
         port = "60478",
-        database = "usuarios";*/
+        database = "usuarios";
     
-    var username = "",
+   /* var username = "",
         password = "",
         server = "localhost",
         port = "27017",
-        database = "consesp";
+        database = "consesp";*/
     
         return {
         "username": username,
