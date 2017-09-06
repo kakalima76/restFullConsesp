@@ -266,6 +266,7 @@ module.exports.criarNomeConcurso = function(req, res){
 
 	nomesconcursos.nome = req.body.nome;
 	nomesconcursos.data = req.body.data;
+	nomesconcursos.periodo = req.body.periodo;
 	
 	nomesconcursos.save(function(err, data){
 			if(err){

@@ -35,7 +35,8 @@ var rpaSchema = new mongoose.Schema({
 
 var nomesConcursosSchema = new mongoose.Schema({
 	"nome": {type: String},
-	"data": {type: Date}
+	"data": {type: String},
+	"periodo": {type: String}
 })
 
 mongoose.model('Concurso', concursosSchema);
