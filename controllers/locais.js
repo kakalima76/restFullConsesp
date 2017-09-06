@@ -157,7 +157,14 @@ var nomesConcursos = mongoose.model('nomesConcursos');
 			}else{
 
 
-				data[0].dataEscalado = req.body.dataEscalado;
+				if(req.body.manha){
+					data[0].dataEscalado = req.body.dataEscalado;
+					data[0].manha = req.body.manha;
+				}else{
+					data[0].dataEscalado = req.body.dataEscalado;
+					data[0].tarde = req.body.tarde;
+				}
+				
 
 				data[0].save(function(err, data){
 					if(err){
