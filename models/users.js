@@ -29,6 +29,7 @@ var rpaSchema = new mongoose.Schema({
 	"municipio": {type: String},
 	"contato": {type: String},
 	"email": {type: String},
+	"dataEscalado": {type: String},
 	"concursos": [concursosSchema]
 });
 

@@ -5,7 +5,7 @@ var controller = require('../controllers/locais');
 router.get('/cadastro/listarCadastro', controller.listarCadastro);
 router.post('/cadastro/criarCadastro', controller.criarCadastro);
 router.post('/cadastro/criarConcurso', controller.criarConcurso);
-router.post('/cadastro/atualizarContato', controller.atualizarContato);
+router.post('/cadastro/atualizarEscalado', controller.atualizarEscalado);
 router.post('/cadastro/removerCadastro', controller.removerCadastro);
 router.post('/cadastro/atualizarConcurso', controller.atualizarConcurso);
 router.post('/cadastro/criarNomeConcurso', controller.criarNomeConcurso);
