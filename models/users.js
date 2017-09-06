@@ -30,6 +30,8 @@ var rpaSchema = new mongoose.Schema({
 	"contato": {type: String},
 	"email": {type: String},
 	"dataEscalado": {type: String},
+	"manha": {type: Boolean},
+	"tarde": {type: Boolean},
 	"concursos": [concursosSchema]
 });
 
