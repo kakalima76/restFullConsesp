@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 var Rpa	= mongoose.model('Rpa');
-var Concurso = mongoose.model('Concurso');
 var nomesConcursos = mongoose.model('nomesConcursos');
 
 
@@ -84,11 +83,11 @@ var nomesConcursos = mongoose.model('nomesConcursos');
 			}else{
 
 
-				var concurso = new Concurso();
+				var concurso = new nomesConcursos();
 				//var d = new Date();			
 				concurso.data = req.body.data;
 				concurso.nome = req.body.nome;
-				concurso.status = req.body.status;
+				concurso.status = req.body.periodo;
 				
 				data[0].concursos.push(concurso);
 				data[0].save(function(err, data){
@@ -102,9 +101,6 @@ var nomesConcursos = mongoose.model('nomesConcursos');
 			}
 		})		
 	}
-
-
-
 
 	
 	module.exports.listarCadastro = function(req, res){
@@ -129,182 +125,7 @@ var nomesConcursos = mongoose.model('nomesConcursos');
 		})	
 	}
 
-
-	module.exports.atualizarEscalado = function(req, res){
-
 		
-		if(!req.body.cpf){
-			sendJsonResponse(res, 404, {
-				'message': 'Informe um cpf!'
-			})
-
-			return;
-		}
-
-		var query = Rpa.find({'cpf': req.body.cpf});
-		query.exec(function(err, data){
-			if(!data){
-				sendJsonResponse(res, 404, {
-					'message': 'problemas para acessar o arquivo.'
-				})
-
-				return;
-
-			}else if(err){
-				sendJsonResponse(res, 400, err);
-
-				return;
-			}else{
-
-
-				if(req.body.manha){
-					data[0].dataEscalado = req.body.dataEscalado;
-					data[0].manha = req.body.manha;
-				}else{
-					data[0].dataEscalado = req.body.dataEscalado;
-					data[0].tarde = req.body.tarde;
-				}
-				
-
-				data[0].save(function(err, data){
-					if(err){
-						sendJsonResponse(res, 404, err)
-					}else{
-						sendJsonResponse(res, 200, data);	
-					}
-				})
-				
-			}
-		})		
-	}
-
-		module.exports.atualizarManha = function(req, res){
-
-		
-		if(!req.body.cpf){
-			sendJsonResponse(res, 404, {
-				'message': 'Informe um cpf!'
-			})
-
-			return;
-		}
-
-		var query = Rpa.find({'cpf': req.body.cpf});
-		query.exec(function(err, data){
-			if(!data){
-				sendJsonResponse(res, 404, {
-					'message': 'problemas para acessar o arquivo.'
-				})
-
-				return;
-
-			}else if(err){
-				sendJsonResponse(res, 400, err);
-
-				return;
-			}else{
-
-			
-				data[0].manha = 0;			
-
-				data[0].save(function(err, data){
-					if(err){
-						sendJsonResponse(res, 404, err)
-					}else{
-						sendJsonResponse(res, 200, data);	
-					}
-				})
-				
-			}
-		})		
-	}
-
-	module.exports.atualizarTarde = function(req, res){
-
-		
-		if(!req.body.cpf){
-			sendJsonResponse(res, 404, {
-				'message': 'Informe um cpf!'
-			})
-
-			return;
-		}
-
-		var query = Rpa.find({'cpf': req.body.cpf});
-		query.exec(function(err, data){
-			if(!data){
-				sendJsonResponse(res, 404, {
-					'message': 'problemas para acessar o arquivo.'
-				})
-
-				return;
-
-			}else if(err){
-				sendJsonResponse(res, 400, err);
-
-				return;
-			}else{
-
-			
-				data[0].tarde = 0;			
-
-				data[0].save(function(err, data){
-					if(err){
-						sendJsonResponse(res, 404, err)
-					}else{
-						sendJsonResponse(res, 200, data);	
-					}
-				})
-				
-			}
-		})		
-	}
-
-	module.exports.atualizarDia = function(req, res){
-
-		
-		if(!req.body.cpf){
-			sendJsonResponse(res, 404, {
-				'message': 'Informe um cpf!'
-			})
-
-			return;
-		}
-
-		var query = Rpa.find({'cpf': req.body.cpf});
-		query.exec(function(err, data){
-			if(!data){
-				sendJsonResponse(res, 404, {
-					'message': 'problemas para acessar o arquivo.'
-				})
-
-				return;
-
-			}else if(err){
-				sendJsonResponse(res, 400, err);
-
-				return;
-			}else{
-
-						
-				data[0].manha = 0;
-				data[0].tarde = 0;
-				data[0].dataEscalado = '';
-		
-
-				data[0].save(function(err, data){
-					if(err){
-						sendJsonResponse(res, 404, err)
-					}else{
-						sendJsonResponse(res, 200, data);	
-					}
-				})
-				
-			}
-		})		
-	}
-
-	
 	module.exports.removerCadastro = function(req, res){
 
 	

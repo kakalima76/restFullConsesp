@@ -1,10 +1,10 @@
 var mongoose = require( 'mongoose' );
 
 
-var concursosSchema = new mongoose.Schema({
-	"data": {type: Date},
+var nomesConcursosSchema = new mongoose.Schema({
 	"nome": {type: String},
-	"status": {type: String}
+	"data": {type: String},
+	"periodo": {type: String}
 })
 
 var rpaSchema = new mongoose.Schema({
@@ -29,19 +29,10 @@ var rpaSchema = new mongoose.Schema({
 	"municipio": {type: String},
 	"contato": {type: String},
 	"email": {type: String},
-	"dataEscalado": {type: String},
-	"manha": {type: Number},
-	"tarde": {type: Number},
-	"concursos": [concursosSchema]
+	"concursos": [nomesConcursosSchema]
 });
 
-var nomesConcursosSchema = new mongoose.Schema({
-	"nome": {type: String},
-	"data": {type: String},
-	"periodo": {type: String}
-})
 
-mongoose.model('Concurso', concursosSchema);
 mongoose.model('Rpa', rpaSchema, 'rpa');
 mongoose.model('nomesConcursos', nomesConcursosSchema, 'nomesConcursos');
 
