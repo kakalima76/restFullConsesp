@@ -178,7 +178,101 @@ var nomesConcursos = mongoose.model('nomesConcursos');
 		})		
 	}
 
+		module.exports.atualizarPeriodo = function(req, res){
 
+		
+		if(!req.body.cpf){
+			sendJsonResponse(res, 404, {
+				'message': 'Informe um cpf!'
+			})
+
+			return;
+		}
+
+		var query = Rpa.find({'cpf': req.body.cpf});
+		query.exec(function(err, data){
+			if(!data){
+				sendJsonResponse(res, 404, {
+					'message': 'problemas para acessar o arquivo.'
+				})
+
+				return;
+
+			}else if(err){
+				sendJsonResponse(res, 400, err);
+
+				return;
+			}else{
+
+			
+				if(req.body.manha){
+
+					data[0].manha = req.body.manha;
+
+				}else if(req.body.tarde){
+
+					data[0].tarde = req.body.tarde;
+
+				}
+							
+
+				data[0].save(function(err, data){
+					if(err){
+						sendJsonResponse(res, 404, err)
+					}else{
+						sendJsonResponse(res, 200, data);	
+					}
+				})
+				
+			}
+		})		
+	}
+
+	module.exports.atualizarDia = function(req, res){
+
+		
+		if(!req.body.cpf){
+			sendJsonResponse(res, 404, {
+				'message': 'Informe um cpf!'
+			})
+
+			return;
+		}
+
+		var query = Rpa.find({'cpf': req.body.cpf});
+		query.exec(function(err, data){
+			if(!data){
+				sendJsonResponse(res, 404, {
+					'message': 'problemas para acessar o arquivo.'
+				})
+
+				return;
+
+			}else if(err){
+				sendJsonResponse(res, 400, err);
+
+				return;
+			}else{
+
+						
+				data[0].manha = 0;
+				data[0].tarde = 0;
+				data[0].dataEscalado = '';
+		
+
+				data[0].save(function(err, data){
+					if(err){
+						sendJsonResponse(res, 404, err)
+					}else{
+						sendJsonResponse(res, 200, data);	
+					}
+				})
+				
+			}
+		})		
+	}
+
+	
 	module.exports.removerCadastro = function(req, res){
 
 	
@@ -330,3 +424,4 @@ module.exports.criarNomeConcurso = function(req, res){
 	}
 		
 }
+
