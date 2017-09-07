@@ -278,3 +278,36 @@ module.exports.criarNomeConcurso = function(req, res){
 		
 }
 
+module.exports.removerConcurso = function(req, res){
+
+        Rpa
+			.findById(req.body.idCadastro)
+			.select('concursos')
+			.exec(function(err, cadastro){
+				if(!cadastro){
+					sendJsonResponse(res, 404, {"message" : 'No found 1'});
+					return;
+				}else if(err){
+					sendJsonResponse(res, 400, err);
+					return;
+				}
+
+				if(cadastro.concursos && cadastro.concursos.length > 0){
+					if(!cadastro.concursos.id(req.body.idConcurso)){
+						sendJsonResponse(res, 404, {'message': 'No found 2'})
+					}else{
+						cadastro.concursos.id(req.body.idConcurso).remove();
+						cadastro.save(function(err){
+							if(err){
+								sendJsonResponse(res, 404, err);
+							}else{
+								sendJsonResponse(res, 200, null);
+							}
+						});
+					}
+				}else{
+					sendJsonResponse(res, 404, {'message': 'sem concurso para deletar'});
+				}
+
+			})//fim do .exec
+	}//fim da função

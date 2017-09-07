@@ -10,6 +10,7 @@ router.post('/cadastro/atualizarConcurso', controller.atualizarConcurso);
 router.post('/cadastro/criarNomeConcurso', controller.criarNomeConcurso);
 router.get('/cadastro/listarNomeConcursos', controller.listarNomeConcursos);
 router.post('/cadastro/removerNomeConcurso', controller.removerNomeConcurso);
+router.post('/cadastro/removerConcurso', controller.removerConcurso);
 
 
 module.exports = router;
