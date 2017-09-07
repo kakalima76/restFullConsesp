@@ -4,7 +4,8 @@ var mongoose = require( 'mongoose' );
 var nomesConcursosSchema = new mongoose.Schema({
 	"nome": {type: String},
 	"data": {type: String},
-	"periodo": {type: String}
+	"periodo": {type: String},
+	"funcao": {type: String}
 })
 
 var rpaSchema = new mongoose.Schema({

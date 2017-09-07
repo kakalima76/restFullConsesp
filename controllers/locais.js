@@ -88,6 +88,7 @@ var nomesConcursos = mongoose.model('nomesConcursos');
 				concurso.data = req.body.data;
 				concurso.nome = req.body.nome;
 				concurso.status = req.body.periodo;
+				concurso.funcao = req.body.funcao;
 				
 				data[0].concursos.push(concurso);
 				data[0].save(function(err, data){
