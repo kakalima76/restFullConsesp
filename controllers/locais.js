@@ -207,11 +207,11 @@ var nomesConcursos = mongoose.model('nomesConcursos');
 			
 				if(req.body.manha){
 
-					data[0].manha = req.body.manha;
+					data[0].manha = 0;
 
 				}else if(req.body.tarde){
 
-					data[0].tarde = req.body.tarde;
+					data[0].tarde = 0;
 
 				}
 							
