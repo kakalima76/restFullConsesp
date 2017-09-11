@@ -9,13 +9,12 @@ var debug = require('debug')('appCCU:server');
 var http = require('http');
 var cluster = require('cluster');
 var numCPUs = require('os').cpus().length;
-
 var onWorkerError = function(code, signal){
   debug(code, signal);
 }
 
 if(cluster.isMaster){
-  for( var i = 0; i < numCPUs - 3; i++){
+  for( var i = 0; i < numCPUs; i++){
     var worker = cluster.fork();
     worker.on('error', onWorkerError);
   }

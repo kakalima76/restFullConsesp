@@ -5,7 +5,9 @@ var nomesConcursosSchema = new mongoose.Schema({
 	"nome": {type: String},
 	"data": {type: String},
 	"periodo": {type: String},
-	"funcao": {type: String}
+	"funcao": {type: String},
+	"empresa": {type: String},
+	"quantidade": {type: Number}
 })
 
 var rpaSchema = new mongoose.Schema({

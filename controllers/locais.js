@@ -90,6 +90,7 @@ var nomesConcursos = mongoose.model('nomesConcursos');
 				concurso.status = req.body.periodo;
 				concurso.funcao = req.body.funcao;
 				
+				
 				data[0].concursos.push(concurso);
 				data[0].save(function(err, data){
 					if(err){
@@ -218,12 +219,12 @@ module.exports.criarNomeConcurso = function(req, res){
 		}
 
 	var nomesconcursos = new nomesConcursos();
-		
-	console.log(nomesConcursos);
-
+	
 	nomesconcursos.nome = req.body.nome;
 	nomesconcursos.data = req.body.data;
 	nomesconcursos.periodo = req.body.periodo;
+	nomesconcursos.empresa = req.body.empresa;
+	nomesconcursos.quantidade = req.body.quantidade;
 	
 	nomesconcursos.save(function(err, data){
 			if(err){
