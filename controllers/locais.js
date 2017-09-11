@@ -225,6 +225,7 @@ module.exports.criarNomeConcurso = function(req, res){
 	nomesconcursos.periodo = req.body.periodo;
 	nomesconcursos.empresa = req.body.empresa;
 	nomesconcursos.quantidade = req.body.quantidade;
+	nomesconcursos.cnpj = req.body.cnpj;
 	
 	nomesconcursos.save(function(err, data){
 			if(err){
